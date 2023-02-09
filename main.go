@@ -1,33 +1,27 @@
 package main
 
-import "fmt"
+import (
+	"ticketBooking/utils"
+
+	"github.com/gin-gonic/gin"
+)
+
+func init(){
+	utils.LoadEnvVariables()
+	utils.ConnectingToDatabase()
+}
 
 func main(){
-	var ticket Ticket
+	r := gin.Default()
+	
+	r.GET("/", func(ctx *gin.Context) {
+		ctx.JSON(200, gin.H{
+			"message":"Hello Men",
+		})
+	})
 
-	ticket.id =1
-	ticket.number = 3
-	ticket.clientName = "Nicholas"
-	ticket.eventVenue = "GreenStar"
-
-	displayTicket(ticket)
-
+	r.Run()
 }
 
-type Ticket struct{
-	id int
-	number int
-	clientName string
-	eventVenue string
-}
-
-func displayTicket(ticko Ticket){
-	fmt.Println("Your Ticket details are.....")
-	fmt.Println("Id:", ticko.id)
-	fmt.Println("number:", ticko.number)
-	fmt.Println("name:", ticko.clientName)
-	fmt.Println("venue:",ticko.eventVenue)
-
-}
 
 

@@ -6,11 +6,11 @@ import (
 )
 
 type Ticket struct{
-	id int `gorm:"primaryKey"`
-	ticketTitle string
-	ticketDescription string
-	ticketPrice int
-	eventDate time.Time
+	id int `gorm:"primaryKey" json:"id"`
+	ticketTitle string `json:"ticketTitle"`
+	ticketDescription string `json:"ticketDescription"`
+	ticketPrice int `json:"ticketPrice"`
+	eventDate time.Time `json:"eventdate"`
 
 }
 
